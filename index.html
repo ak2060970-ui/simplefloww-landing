@@ -101,37 +101,31 @@
         #FFFFFF;
     }
 
-    /* Scroll Reveal & Interactive Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-32px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(32px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.94);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal.is-revealed,
-    .reveal-left.is-revealed,
-    .reveal-right.is-revealed,
-    .reveal-scale.is-revealed {
+    /* Scroll Reveal - Progressive Enhancement (Never blank!) */
+    .reveal, .reveal-left, .reveal-right, .reveal-scale {
       opacity: 1;
-      transform: translate(0, 0) scale(1);
+      transform: none;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .has-reveal .reveal:not(.is-revealed) {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .has-reveal .reveal-left:not(.is-revealed) {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    .has-reveal .reveal-right:not(.is-revealed) {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    .has-reveal .reveal-scale:not(.is-revealed) {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    .has-reveal .is-revealed {
+      opacity: 1 !important;
+      transform: none !important;
     }
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
@@ -1165,29 +1159,48 @@
       wrap.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/i7R5ui_64xM?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function initApp() {
       if (window.lucide) lucide.createIcons();
 
-    // Scroll Reveal Observer
-    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
+      // Scroll Reveal initialization
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      if (revealElements.length && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('has-reveal');
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '60px 0px 60px 0px'
+        });
+
+        revealElements.forEach(el => {
+          // If already in initial viewport, mark revealed immediately
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight + 50) {
+            el.classList.add('is-revealed');
+          } else {
+            observer.observe(el);
           }
         });
-      }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -30px 0px'
-      });
-      revealElements.forEach(el => revealObserver.observe(el));
-    } else {
-      revealElements.forEach(el => el.classList.add('is-revealed'));
+
+        // Fail-safe: Reveal everything after 1s so no element is ever stuck invisible
+        setTimeout(() => {
+          revealElements.forEach(el => el.classList.add('is-revealed'));
+        }, 1200);
+      }
     }
 
-    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
   </script>
 </body>
 </html>
