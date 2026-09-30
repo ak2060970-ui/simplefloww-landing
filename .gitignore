@@ -1,3 +1,7 @@
 .DS_Store
 *.b64.txt
 assets/*_b64.txt
+
+email-template.html
+*.zip
+
