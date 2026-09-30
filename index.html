@@ -1505,8 +1505,27 @@
         return;
       }
 
-      // Live Discount Coupons: LAUNCH10 (10% OFF), VIP200 (Flat ₹200 OFF)
-      if (code === 'LAUNCH10') {
+      // Secret/Test Coupon TEST1: Flat ₹1178 discount on Monthly (Total: ₹1)
+      if (code === 'TEST1' || code === 'TEST') {
+        appliedCoupon = code;
+        if (discountRow) discountRow.classList.remove('hidden');
+        if (discountLabel) discountLabel.textContent = 'Special Coupon (' + code + ')';
+
+        if (activePlan === 'monthly') {
+          if (discountVal) discountVal.textContent = '-₹1,178';
+          if (totalVal) totalVal.textContent = '₹1.00';
+          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1';
+        } else {
+          if (discountVal) discountVal.textContent = '-₹11,798';
+          if (totalVal) totalVal.textContent = '₹1.00';
+          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1';
+        }
+
+        if (msg) {
+          msg.className = 'text-[11px] font-bold text-emerald-600 mt-1 block';
+          msg.textContent = '🎉 Coupon ' + code + ' applied! ₹1,178 discount applied. Final amount: ₹1.00';
+        }
+      } else if (code === 'LAUNCH10') {
         appliedCoupon = code;
         var discountAmount = (activePlan === 'monthly') ? 118 : 1180; // 10%
         var finalAmount = (activePlan === 'monthly') ? 1061 : 10619;
@@ -1613,7 +1632,10 @@
       let amountPaise = isMonthly ? 117900 : 1179900;
       let planName = isMonthly ? "Simple Floww Starter Plan (₹999 + 18% GST = ₹1,179/mo)" : "Simple Floww Annual Plan (14 Months Access = ₹11,799)";
 
-      if (appliedCoupon === 'LAUNCH10') {
+      if (appliedCoupon === 'TEST1' || appliedCoupon === 'TEST') {
+        amountPaise = 100; // Exact ₹1.00 in paise for live gateway test
+        planName = planName + " [Coupon " + appliedCoupon + " Applied - ₹1 Test Purchase]";
+      } else if (appliedCoupon === 'LAUNCH10') {
         amountPaise = isMonthly ? 106100 : 1061900;
         planName = planName + " [Coupon LAUNCH10 (10% OFF) Applied]";
       }
