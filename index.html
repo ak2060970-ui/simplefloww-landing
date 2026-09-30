@@ -1402,9 +1402,24 @@
           <span>VIP Zoom Setup Call + 15 Bot Packs</span>
           <span>FREE</span>
         </div>
+        <div id="modal-discount-row" class="hidden flex justify-between text-emerald-600 font-bold">
+          <span id="modal-discount-label">Coupon Discount (TEST1)</span>
+          <span id="modal-discount-val">-₹1,178</span>
+        </div>
         <div class="pt-1.5 border-t border-slate-200 flex justify-between font-black text-sm text-slate-900">
           <span>Total Payable</span>
           <span class="text-brand-blue" id="modal-total-val">₹1,179</span>
+        </div>
+        
+        <!-- Coupon Code Box -->
+        <div class="pt-2 border-t border-slate-200">
+          <div class="flex items-center gap-1.5">
+            <input type="text" id="coupon-code-input" onkeydown="if(event.key === 'Enter'){ event.preventDefault(); applyCoupon(); }" placeholder="Have a coupon? (Try: TEST1)" class="uppercase flex-1 px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-brand-blue font-bold tracking-wider">
+            <button type="button" onclick="applyCoupon()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition-all">
+              Apply
+            </button>
+          </div>
+          <div id="coupon-msg" class="text-[11px] font-semibold mt-1 hidden"></div>
         </div>
       </div>
 
@@ -1422,7 +1437,7 @@
           <input type="email" id="checkout-email" required placeholder="you@company.com" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-blue">
         </div>
 
-        <button type="submit" class="cta-shine w-full py-3 rounded-xl font-bold text-xs text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md mt-1">
+        <button type="submit" id="checkout-submit-btn" class="cta-shine w-full py-3 rounded-xl font-bold text-xs text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md mt-1">
           Proceed to Razorpay Payment
         </button>
 
@@ -1511,6 +1526,9 @@
         gst.textContent = "₹1,800";
         total.textContent = "₹11,799";
       }
+      if (appliedCoupon) {
+        applyCoupon();
+      }
     }
 
     function handlePayment(e) {
@@ -1525,8 +1543,13 @@
       const email = emailInput ? emailInput.value.trim() : "";
 
       const isMonthly = (activePlan === "monthly");
-      const amountPaise = isMonthly ? 117900 : 1179900;
-      const planName = isMonthly ? "Simple Floww Starter Plan (₹999 + 18% GST = ₹1,179/mo)" : "Simple Floww Annual Plan (14 Months Access = ₹11,799)";
+      let amountPaise = isMonthly ? 117900 : 1179900;
+      let planName = isMonthly ? "Simple Floww Starter Plan (₹999 + 18% GST = ₹1,179/mo)" : "Simple Floww Annual Plan (14 Months Access = ₹11,799)";
+
+      if (appliedCoupon) {
+        amountPaise = 100; // ₹1.00 (100 paise) for live test
+        planName = planName + " [Coupon " + appliedCoupon + " Applied - Live Test ₹1]";
+      }
 
       if (typeof Razorpay === "undefined") {
         alert("Payment gateway is still loading. Please check your internet connection or reload the page.");
