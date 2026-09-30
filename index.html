@@ -161,14 +161,27 @@
       animation: pulseRing 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     }
 
-    /* Card Hover elevation */
+    /* Card Hover elevation (Desktop only - never shift on touchscreens to prevent click cancellation) */
     .hover-lift {
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
     }
-    .hover-lift:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 38px -10px rgba(10, 17, 40, 0.12);
-      border-color: rgba(0, 71, 255, 0.45);
+    @media (hover: hover) and (pointer: fine) {
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 38px -10px rgba(10, 17, 40, 0.12);
+        border-color: rgba(0, 71, 255, 0.45);
+      }
+    }
+
+    /* Mobile Touch & Input Responsiveness: 0ms tap delay & prevent iOS auto-zoom viewport jumping */
+    button, [role="button"], input, select, textarea {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    @media (max-width: 640px) {
+      #checkout-modal input {
+        font-size: 16px !important;
+      }
     }
 
     /* Gradient border shimmer for Launch Offer */
@@ -1135,7 +1148,7 @@
           </div>
 
           <div>
-            <button onclick="openCheckoutModal('monthly')" class="cta-shine w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md">
+            <button type="button" onclick="openCheckoutModal('monthly')" class="cta-shine w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-blue active:scale-95 transition-all shadow-md cursor-pointer select-none">
               Subscribe Monthly &mdash; ₹1,179 (₹33/Day)
             </button>
           </div>
@@ -1190,7 +1203,7 @@
           </div>
 
           <div>
-            <button onclick="openCheckoutModal('annual')" class="cta-shine w-full py-3.5 rounded-xl font-black text-xs sm:text-sm bg-brand-cyan text-brand-navy hover:bg-white transition-all shadow-md">
+            <button type="button" onclick="openCheckoutModal('annual')" class="cta-shine w-full py-3.5 rounded-xl font-black text-xs sm:text-sm bg-brand-cyan text-brand-navy hover:bg-white active:scale-95 transition-all shadow-md cursor-pointer select-none">
               Subscribe Annual &mdash; ₹11,799 (Just ₹23/Day)
             </button>
           </div>
@@ -1365,8 +1378,8 @@
   </div>
 
   <!-- ==================== 13. CHECKOUT MODAL ==================== -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative">
+  <div id="checkout-modal" class="fixed inset-0 z-[99999] bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain">
+    <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 relative my-auto max-h-[92vh] overflow-y-auto">
       
       <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full">
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -1425,16 +1438,16 @@
 
       <form onsubmit="handlePayment(event)" class="space-y-3">
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">Full Name</label>
-          <input type="text" id="checkout-name" required placeholder="Your Name" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-blue">
+          <label for="checkout-name" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">Full Name</label>
+          <input type="text" id="checkout-name" required placeholder="Your Name" enterkeyhint="next" autocomplete="name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">WhatsApp Number</label>
-          <input type="tel" id="checkout-phone" required placeholder="+91 98765 43210" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-blue">
+          <label for="checkout-phone" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">WhatsApp Number</label>
+          <input type="tel" id="checkout-phone" required placeholder="+91 98765 43210" enterkeyhint="next" autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">Work Email</label>
-          <input type="email" id="checkout-email" required placeholder="you@company.com" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-blue">
+          <label for="checkout-email" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">Work Email</label>
+          <input type="email" id="checkout-email" required placeholder="you@company.com" enterkeyhint="done" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
 
         <button type="submit" id="checkout-submit-btn" class="cta-shine w-full py-3 rounded-xl font-bold text-xs text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md mt-1">
@@ -1495,6 +1508,41 @@
 
     // Modal Helpers
     let activePlan = 'monthly';
+        // Keyboard Enter chaining & direct touch focus on inputs
+    document.addEventListener('DOMContentLoaded', () => {
+      const cName = document.getElementById('checkout-name');
+      const cPhone = document.getElementById('checkout-phone');
+      const cEmail = document.getElementById('checkout-email');
+
+      if (cName && cPhone) {
+        cName.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            cPhone.focus();
+          }
+        });
+      }
+      if (cPhone && cEmail) {
+        cPhone.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            cEmail.focus();
+          }
+        });
+      }
+
+      // Ensure instant focus on first tap even if keyboard is active
+      ['checkout-name', 'checkout-phone', 'checkout-email', 'coupon-code-input'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('touchstart', (e) => {
+            e.stopPropagation();
+            el.focus();
+          }, { passive: true });
+        }
+      });
+    });
+
     function openCheckoutModal(plan) {
       switchModalPlan(plan || 'monthly');
       document.getElementById('checkout-modal').classList.remove('hidden');
