@@ -1378,7 +1378,7 @@
   </div>
 
   <!-- ==================== 13. CHECKOUT MODAL ==================== -->
-  <div id="checkout-modal" class="fixed inset-0 z-[99999] bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain">
+  <div id="checkout-modal" style="display: none;" class="fixed inset-0 z-[99999] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain">
     <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 relative my-auto max-h-[92vh] overflow-y-auto">
       
       <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full">
@@ -1439,15 +1439,15 @@
       <form onsubmit="handlePayment(event)" class="space-y-3">
         <div>
           <label for="checkout-name" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">Full Name</label>
-          <input type="text" id="checkout-name" required placeholder="Your Name" enterkeyhint="next" autocomplete="name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
+          <input type="text" id="checkout-name" required placeholder="Your Name" enterkeyhint="next" autocomplete="name" tabindex="1" onclick="this.focus()" ontouchstart="this.focus()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
         <div>
           <label for="checkout-phone" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">WhatsApp Number</label>
-          <input type="tel" id="checkout-phone" required placeholder="+91 98765 43210" enterkeyhint="next" autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
+          <input type="tel" id="checkout-phone" required placeholder="+91 98765 43210" enterkeyhint="next" autocomplete="tel" tabindex="2" onclick="this.focus()" ontouchstart="this.focus()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
         <div>
           <label for="checkout-email" class="block text-xs font-bold text-slate-700 mb-1 cursor-pointer">Work Email</label>
-          <input type="email" id="checkout-email" required placeholder="you@company.com" enterkeyhint="done" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
+          <input type="email" id="checkout-email" required placeholder="you@company.com" enterkeyhint="done" autocomplete="email" tabindex="3" onclick="this.focus()" ontouchstart="this.focus()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-base sm:text-xs focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all">
         </div>
 
         <button type="submit" id="checkout-submit-btn" class="cta-shine w-full py-3 rounded-xl font-bold text-xs text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md mt-1">
@@ -1507,73 +1507,112 @@
     
 
     // Modal Helpers
-    let activePlan = 'monthly';
-        // Keyboard Enter chaining & direct touch focus on inputs
-    document.addEventListener('DOMContentLoaded', () => {
-      const cName = document.getElementById('checkout-name');
-      const cPhone = document.getElementById('checkout-phone');
-      const cEmail = document.getElementById('checkout-email');
+    var activePlan = 'monthly';
+    var appliedCoupon = null;
 
-      if (cName && cPhone) {
-        cName.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            cPhone.focus();
-          }
-        });
-      }
-      if (cPhone && cEmail) {
-        cPhone.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            cEmail.focus();
-          }
-        });
-      }
+    function applyCoupon() {
+      var input = document.getElementById('coupon-code-input');
+      var msg = document.getElementById('coupon-msg');
+      var discountRow = document.getElementById('modal-discount-row');
+      var discountVal = document.getElementById('modal-discount-val');
+      var discountLabel = document.getElementById('modal-discount-label');
+      var totalVal = document.getElementById('modal-total-val');
+      var payBtn = document.getElementById('checkout-submit-btn');
 
-      // Ensure instant focus on first tap even if keyboard is active
-      ['checkout-name', 'checkout-phone', 'checkout-email', 'coupon-code-input'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.addEventListener('touchstart', (e) => {
-            e.stopPropagation();
-            el.focus();
-          }, { passive: true });
+      if (!input) return;
+      var code = input.value.trim().toUpperCase();
+
+      if (code === 'TEST1' || code === 'TEST' || code === 'FLOWW1' || code === 'VIP1') {
+        appliedCoupon = code;
+        if (discountRow) discountRow.classList.remove('hidden');
+        if (discountLabel) discountLabel.textContent = 'Special Test Discount (' + code + ')';
+
+        if (activePlan === 'monthly') {
+          if (discountVal) discountVal.textContent = '-₹1,178';
+          if (totalVal) totalVal.textContent = '₹1.00';
+          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1 (Test)';
+        } else {
+          if (discountVal) discountVal.textContent = '-₹11,798';
+          if (totalVal) totalVal.textContent = '₹1.00';
+          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1 (Test)';
         }
-      });
-    });
+
+        if (msg) {
+          msg.className = 'text-[11px] font-bold text-emerald-600 mt-1 block';
+          msg.textContent = '🎉 Coupon ' + code + ' applied! Discount of ₹' + (activePlan === 'monthly' ? '1,178' : '11,798') + ' applied. Pay only ₹1 for live test.';
+        }
+      } else if (code === '') {
+        if (msg) {
+          msg.className = 'text-[11px] font-semibold text-rose-500 mt-1 block';
+          msg.textContent = 'Please enter a coupon code.';
+        }
+      } else {
+        if (msg) {
+          msg.className = 'text-[11px] font-semibold text-rose-500 mt-1 block';
+          msg.textContent = 'Invalid or expired coupon code.';
+        }
+      }
+    }
+
+    function resetCoupon() {
+      appliedCoupon = null;
+      var input = document.getElementById('coupon-code-input');
+      var msg = document.getElementById('coupon-msg');
+      var discountRow = document.getElementById('modal-discount-row');
+      var payBtn = document.getElementById('checkout-submit-btn');
+      if (input) input.value = '';
+      if (msg) msg.className = 'hidden';
+      if (discountRow) discountRow.classList.add('hidden');
+      if (payBtn) payBtn.textContent = 'Proceed to Razorpay Payment';
+    }
 
     function openCheckoutModal(plan) {
+      resetCoupon();
       switchModalPlan(plan || 'monthly');
-      document.getElementById('checkout-modal').classList.remove('hidden');
-    }
-    function closeCheckoutModal() {
-      document.getElementById('checkout-modal').classList.add('hidden');
-    }
-    function switchModalPlan(p) {
-      activePlan = p;
-      const mTab = document.getElementById('modal-tab-monthly');
-      const aTab = document.getElementById('modal-tab-annual');
-      const title = document.getElementById('modal-plan-title');
-      const base = document.getElementById('modal-base-val');
-      const gst = document.getElementById('modal-gst-val');
-      const total = document.getElementById('modal-total-val');
-
-      if (p === 'monthly') {
-        mTab.className = "py-2 rounded-lg bg-white shadow-sm text-brand-navy";
-        aTab.className = "py-2 rounded-lg text-slate-600 hover:text-slate-900";
-        title.textContent = "Simple Floww Standard (1 Month) — Just ₹33/Day";
-        base.textContent = "₹999";
-        gst.textContent = "₹180";
-        total.textContent = "₹1,179";
-      } else {
-        aTab.className = "py-2 rounded-lg bg-sf-gradient shadow-sm text-white";
-        mTab.className = "py-2 rounded-lg text-slate-600 hover:text-slate-900";
-        title.textContent = "Simple Floww Annual (12 + 2 Months Free) — Just ₹23/Day";
-        base.textContent = "₹9,999";
-        gst.textContent = "₹1,800";
-        total.textContent = "₹11,799";
+      var modal = document.getElementById('checkout-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
       }
+      setTimeout(function() {
+        var firstInput = document.getElementById('checkout-name');
+        if (firstInput && window.innerWidth > 640) firstInput.focus();
+      }, 100);
+    }
+
+    function closeCheckoutModal() {
+      var modal = document.getElementById('checkout-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+      }
+    }
+
+    function switchModalPlan(p) {
+      activePlan = p || 'monthly';
+      var mTab = document.getElementById('modal-tab-monthly');
+      var aTab = document.getElementById('modal-tab-annual');
+      var title = document.getElementById('modal-plan-title');
+      var base = document.getElementById('modal-base-val');
+      var gst = document.getElementById('modal-gst-val');
+      var total = document.getElementById('modal-total-val');
+
+      if (activePlan === 'monthly') {
+        if (mTab) mTab.className = "py-2 rounded-lg bg-white shadow-sm text-brand-navy";
+        if (aTab) aTab.className = "py-2 rounded-lg text-slate-600 hover:text-slate-900";
+        if (title) title.textContent = "Simple Floww Standard (1 Month) — Just ₹33/Day";
+        if (base) base.textContent = "₹999";
+        if (gst) gst.textContent = "₹180";
+        if (total) total.textContent = "₹1,179";
+      } else {
+        if (aTab) aTab.className = "py-2 rounded-lg bg-sf-gradient shadow-sm text-white";
+        if (mTab) mTab.className = "py-2 rounded-lg text-slate-600 hover:text-slate-900";
+        if (title) title.textContent = "Simple Floww Annual (12 + 2 Months Free) — Just ₹23/Day";
+        if (base) base.textContent = "₹9,999";
+        if (gst) gst.textContent = "₹1,800";
+        if (total) total.textContent = "₹11,799";
+      }
+
       if (appliedCoupon) {
         applyCoupon();
       }
