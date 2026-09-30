@@ -2,7 +2,10 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Simple Floww — Official WhatsApp Business API & Sales CRM | Flat ₹999/month</title>
   <meta name="description" content="Official WhatsApp Business API platform. Shared team inbox, automated drip sequences, 4-second Meta Lead Ads auto-replies, and sales pipeline CRM. Flat ₹999/mo.">
 
@@ -1344,7 +1347,7 @@
   </footer>
 
   <!-- ==================== 11. FIXED STICKY BOTTOM CONVERSION BAR ==================== -->
-  <div class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/90 py-2.5 sm:py-3 px-4 shadow-bottom-bar">
+  <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 py-2.5 sm:py-3 px-3 sm:px-4 shadow-bottom-bar pb-[calc(0.6rem+env(safe-area-inset-bottom,0px))]">
     <div class="max-w-5xl mx-auto flex items-center justify-between gap-3">
       
       <!-- Left: Plan & Pricing Highlights -->
@@ -1365,9 +1368,6 @@
 
       <!-- Right: Main Fixed CTA Button -->
       <div class="flex items-center gap-2">
-        <button onclick="openWhatsAppTestModal()" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-brand-waGreen"></i> Test Bot
-        </button>
         <a href="#pricing" class="cta-shine inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md active:scale-95 flex-shrink-0">
           <span>Get Instant Access</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -1416,7 +1416,7 @@
           <span>FREE</span>
         </div>
         <div id="modal-discount-row" class="hidden flex justify-between text-emerald-600 font-bold">
-          <span id="modal-discount-label">Coupon Discount (TEST1)</span>
+          <span id="modal-discount-label">Coupon Discount</span>
           <span id="modal-discount-val">-₹1,178</span>
         </div>
         <div class="pt-1.5 border-t border-slate-200 flex justify-between font-black text-sm text-slate-900">
@@ -1427,7 +1427,7 @@
         <!-- Coupon Code Box -->
         <div class="pt-2 border-t border-slate-200">
           <div class="flex items-center gap-1.5">
-            <input type="text" id="coupon-code-input" onkeydown="if(event.key === 'Enter'){ event.preventDefault(); applyCoupon(); }" placeholder="Have a coupon? (Try: TEST1)" class="uppercase flex-1 px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-brand-blue font-bold tracking-wider">
+            <input type="text" id="coupon-code-input" onkeydown="if(event.key === 'Enter'){ event.preventDefault(); applyCoupon(); }" placeholder="Enter Coupon Code" class="uppercase flex-1 px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-brand-blue font-bold tracking-wider">
             <button type="button" onclick="applyCoupon()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition-all">
               Apply
             </button>
@@ -1459,31 +1459,6 @@
         </p>
       </form>
 
-    </div>
-  </div>
-
-  <!-- ==================== 14. WHATSAPP TEST MODAL ==================== -->
-  <div id="wa-test-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center relative">
-      <button onclick="closeWhatsAppTestModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brand-waGreen flex items-center justify-center mx-auto mb-3">
-        <i data-lucide="message-circle" class="w-6 h-6"></i>
-      </div>
-
-      <h3 class="font-heading font-black text-lg text-slate-900 mb-1">Test 3-Second Bot on WhatsApp</h3>
-      <p class="text-xs text-slate-500 mb-4">Click below to open WhatsApp with a test message and experience our automated response speed live.</p>
-
-      <a href="https://api.whatsapp.com/send?text=Hi%20Simple%20Floww!%20Show%20me%20how%20fast%20your%20WhatsApp%20bot%20and%20CRM%20reply." target="_blank" class="w-full py-3 rounded-xl font-bold text-xs text-white bg-brand-waGreen hover:bg-emerald-600 transition-all shadow-md flex items-center justify-center gap-2 mb-2">
-        <i data-lucide="send" class="w-4 h-4"></i>
-        <span>Launch WhatsApp &amp; Test</span>
-      </a>
-
-      <button onclick="closeWhatsAppTestModal()" class="text-[11px] text-slate-400 hover:text-slate-700 mt-2">
-        Close Window
-      </button>
     </div>
   </div>
 
@@ -1522,31 +1497,36 @@
       if (!input) return;
       var code = input.value.trim().toUpperCase();
 
-      if (code === 'TEST1' || code === 'TEST' || code === 'FLOWW1' || code === 'VIP1') {
-        appliedCoupon = code;
-        if (discountRow) discountRow.classList.remove('hidden');
-        if (discountLabel) discountLabel.textContent = 'Special Test Discount (' + code + ')';
-
-        if (activePlan === 'monthly') {
-          if (discountVal) discountVal.textContent = '-₹1,178';
-          if (totalVal) totalVal.textContent = '₹1.00';
-          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1 (Test)';
-        } else {
-          if (discountVal) discountVal.textContent = '-₹11,798';
-          if (totalVal) totalVal.textContent = '₹1.00';
-          if (payBtn) payBtn.textContent = 'Proceed to Pay ₹1 (Test)';
-        }
-
-        if (msg) {
-          msg.className = 'text-[11px] font-bold text-emerald-600 mt-1 block';
-          msg.textContent = '🎉 Coupon ' + code + ' applied! Discount of ₹' + (activePlan === 'monthly' ? '1,178' : '11,798') + ' applied. Pay only ₹1 for live test.';
-        }
-      } else if (code === '') {
+      if (code === '') {
         if (msg) {
           msg.className = 'text-[11px] font-semibold text-rose-500 mt-1 block';
           msg.textContent = 'Please enter a coupon code.';
         }
+        return;
+      }
+
+      // Live Discount Coupons: LAUNCH10 (10% OFF), VIP200 (Flat ₹200 OFF)
+      if (code === 'LAUNCH10') {
+        appliedCoupon = code;
+        var discountAmount = (activePlan === 'monthly') ? 118 : 1180; // 10%
+        var finalAmount = (activePlan === 'monthly') ? 1061 : 10619;
+
+        if (discountRow) discountRow.classList.remove('hidden');
+        if (discountLabel) discountLabel.textContent = 'Coupon Discount (' + code + ' - 10% OFF)';
+        if (discountVal) discountVal.textContent = '-₹' + discountAmount;
+        if (totalVal) totalVal.textContent = '₹' + finalAmount.toLocaleString('en-IN');
+        if (payBtn) payBtn.textContent = 'Proceed to Pay ₹' + finalAmount.toLocaleString('en-IN');
+
+        if (msg) {
+          msg.className = 'text-[11px] font-bold text-emerald-600 mt-1 block';
+          msg.textContent = '🎉 Coupon ' + code + ' applied! 10% discount has been credited.';
+        }
       } else {
+        appliedCoupon = null;
+        if (discountRow) discountRow.classList.add('hidden');
+        if (totalVal) totalVal.textContent = (activePlan === 'monthly') ? '₹1,179' : '₹11,799';
+        if (payBtn) payBtn.textContent = 'Proceed to Razorpay Payment';
+
         if (msg) {
           msg.className = 'text-[11px] font-semibold text-rose-500 mt-1 block';
           msg.textContent = 'Invalid or expired coupon code.';
@@ -1633,9 +1613,9 @@
       let amountPaise = isMonthly ? 117900 : 1179900;
       let planName = isMonthly ? "Simple Floww Starter Plan (₹999 + 18% GST = ₹1,179/mo)" : "Simple Floww Annual Plan (14 Months Access = ₹11,799)";
 
-      if (appliedCoupon) {
-        amountPaise = 100; // ₹1.00 (100 paise) for live test
-        planName = planName + " [Coupon " + appliedCoupon + " Applied - Live Test ₹1]";
+      if (appliedCoupon === 'LAUNCH10') {
+        amountPaise = isMonthly ? 106100 : 1061900;
+        planName = planName + " [Coupon LAUNCH10 (10% OFF) Applied]";
       }
 
       if (typeof Razorpay === "undefined") {
@@ -1683,12 +1663,7 @@
       }
     }
 
-    function openWhatsAppTestModal() {
-      document.getElementById('wa-test-modal').classList.remove('hidden');
-    }
-    function closeWhatsAppTestModal() {
-      document.getElementById('wa-test-modal').classList.add('hidden');
-    }
+    
 
     function startLiveDemoVideo() {
       const wrap = document.getElementById('vsl-wrapper');
