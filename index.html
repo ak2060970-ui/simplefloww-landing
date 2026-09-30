@@ -220,25 +220,63 @@
         </div>
       </div>
 
-      <!-- Conversion Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-        <a href="#pricing" class="cta-shine w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-lg active:scale-95">
-          <span>Get Instant Access &mdash; Flat ₹999/mo</span>
+      <!-- Conversion Buttons & Live Interactive Bot Demo -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-8">
+        <a href="#pricing" class="cta-shine w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-lg active:scale-95">
+          <span>Get Started &mdash; Flat ₹999/mo</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
-        <button onclick="openWhatsAppTestModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-slate-800 bg-white hover:bg-slate-50 transition-all border border-slate-300 shadow-sm active:scale-95">
+        <a href="https://api.whatsapp.com/send?text=Hi%20Simple%20Floww!%20Show%20me%20how%20fast%20your%20WhatsApp%20bot%20replies." target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:border-brand-waGreen hover:text-emerald-700">
           <i data-lucide="message-circle" class="w-4 h-4 text-brand-waGreen"></i>
-          <span>Test Live Bot on WhatsApp</span>
-        </button>
+          <span>Test Live Bot (3-Sec Demo)</span>
+        </a>
       </div>
 
-      <!-- Trust Assurance Strip -->
-      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-slate-500">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-blue"></i>Official Meta Cloud API</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm"><i data-lucide="video" class="w-3.5 h-3.5 text-brand-blue"></i>Free 1-on-1 Zoom Setup</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm"><i data-lucide="users" class="w-3.5 h-3.5 text-brand-blue"></i>Unlimited Agents</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm"><i data-lucide="percent" class="w-3.5 h-3.5 text-brand-blue"></i>0% Message Markup</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-waGreen"></i>7-Day Guarantee</span>
+      <!-- Live 3-Second Bot Experience Box (QR on desktop / 1-click on mobile) -->
+      <div class="max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-xl reveal-scale text-left">
+        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+          
+          <!-- QR Code for Desktop (Hidden on small mobile screens) -->
+          <div class="hidden sm:flex flex-col items-center justify-center p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex-shrink-0">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fapi.whatsapp.com%2Fsend%3Ftext%3DHi%2520Simple%2520Floww!%2520Show%2520me%2520how%2520fast%2520your%2520WhatsApp%2520bot%2520replies." alt="Scan QR to Test Bot" class="w-24 h-24 rounded-lg shadow-sm" loading="lazy" />
+            <span class="text-[10px] font-bold text-slate-500 mt-1 flex items-center gap-1">
+              <i data-lucide="scan" class="w-3 h-3 text-brand-blue"></i> Scan with Phone
+            </span>
+          </div>
+
+          <!-- Chat Simulation Preview -->
+          <div class="flex-1 w-full space-y-2">
+            <div class="flex items-center justify-between pb-1.5 border-b border-slate-100">
+              <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ring"></span> Live Bot Simulator
+              </span>
+              <span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Reply Speed: 3.2s</span>
+            </div>
+
+            <!-- Outgoing User Msg -->
+            <div class="flex justify-end">
+              <div class="bg-emerald-100/90 text-slate-800 text-xs px-3 py-1.5 rounded-2xl rounded-tr-none shadow-sm max-w-xs">
+                "Hi Simple Floww! How fast does your bot reply?"
+              </div>
+            </div>
+
+            <!-- Incoming Bot Msg -->
+            <div class="flex justify-start">
+              <div class="bg-slate-100 text-slate-800 text-xs p-2.5 rounded-2xl rounded-tl-none shadow-sm max-w-sm border border-slate-200/60 leading-relaxed">
+                <span class="font-bold text-brand-navy block mb-0.5">⚡ Simple Floww Bot:</span>
+                "Welcome! In under 4 seconds, we qualified your inquiry, tagged your budget, and assigned a sales rep &mdash; all hands-free!"
+              </div>
+            </div>
+
+            <div class="pt-1 flex items-center justify-between text-[11px] text-slate-500">
+              <span>Try it live from your phone &rarr;</span>
+              <a href="https://api.whatsapp.com/send?text=Hi%20Simple%20Floww!%20Show%20me%20how%20fast%20your%20WhatsApp%20bot%20replies." target="_blank" rel="noopener" class="text-brand-waGreen font-bold flex items-center gap-1 hover:underline">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Open in WhatsApp
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
@@ -497,6 +535,113 @@
     </div>
   </section>
 
+  <!-- ==================== 4.5 INDUSTRY USE CASES ==================== -->
+  <section class="py-14 sm:py-20 bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-12 reveal">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-blue bg-blue-50 border border-blue-200 px-3.5 py-1 rounded-full inline-block mb-3">
+          BUILT FOR HIGH CONVERSIONS
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-heading font-black text-brand-navy tracking-tight mb-2">
+          Tailored For High-Growth Indian Businesses
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+          Whatever your niche, Simple Floww automates your lead pipeline so you never miss another paying customer.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- 1. Real Estate -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center font-bold mb-3">
+            <i data-lucide="building" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Real Estate &amp; Builders</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Auto-qualify buyer budget (2 BHK / 3 BHK) in 4 seconds, schedule site visits, and instantly assign leads to brokers.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Auto Site Visit Booking
+          </span>
+        </div>
+
+        <!-- 2. D2C & Ecommerce -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal delay-100">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-waGreen flex items-center justify-center font-bold mb-3">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">D2C &amp; E-Commerce Brands</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Recover abandoned carts via WhatsApp with discount coupons, send automated order shipping updates, and collect reviews.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Cart Recovery Engine
+          </span>
+        </div>
+
+        <!-- 3. Coaching & Education -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal delay-200">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-3">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Coaching, EdTech &amp; Institutes</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Capture course inquiries from Meta Ads, deliver brochures instantly, book demo classes, and send automated fee reminders.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Instant Brochure Delivery
+          </span>
+        </div>
+
+        <!-- 4. Healthcare & Clinics -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal">
+          <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold mb-3">
+            <i data-lucide="stethoscope" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Clinics, Doctors &amp; Salons</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Automate appointment bookings, confirm patient slots, send location maps, and reduce appointment no-shows by 70%.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Zero No-Show Reminders
+          </span>
+        </div>
+
+        <!-- 5. B2B & Agencies -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal delay-100">
+          <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold mb-3">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">B2B Services &amp; Agencies</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Multiple sales reps chatting simultaneously from one verified number, shared team inbox, and automated proposal follow-ups.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Multi-Agent Shared Inbox
+          </span>
+        </div>
+
+        <!-- 6. Dealerships & Local Retail -->
+        <div class="hover-lift p-5 rounded-2xl bg-slate-50 border border-slate-200 reveal delay-200">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold mb-3">
+            <i data-lucide="store" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Dealerships &amp; Local Retail</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            Instant price quotes, test-drive scheduling, and seasonal festival broadcast campaigns sent to all past customers.
+          </p>
+          <span class="text-[11px] font-bold text-brand-blue flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Festival Broadcast Blasts
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== 5. WHAT'S INCLUDED: 12 ESSENTIAL TOOLS ==================== -->
   <section class="py-14 sm:py-20 bg-white border-b border-slate-200">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
@@ -728,6 +873,100 @@
     </div>
   </section>
 
+  <!-- ==================== 6.5 ROI & LEAD LEAKAGE CALCULATOR ==================== -->
+  <section class="py-14 sm:py-20 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden" id="calculator">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+      
+      <div class="text-center mb-10 reveal">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-cyan bg-brand-cyan/20 border border-brand-cyan/40 px-3.5 py-1 rounded-full inline-block mb-3">
+          📊 INTERACTIVE ROI CALCULATOR
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-heading font-black text-white tracking-tight mb-2">
+          How Much Revenue Are You Losing to Slow Replies?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+          78% of customers buy from the business that responds first. Slide the controls below to calculate your estimated lead leakage.
+        </p>
+      </div>
+
+      <div class="reveal-scale bg-slate-950/80 rounded-3xl p-6 sm:p-9 border border-slate-700/80 shadow-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <!-- Sliders Left Column -->
+          <div class="space-y-6">
+            
+            <!-- Slider 1: Monthly Leads -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label for="calc-leads-slider" class="text-xs font-bold text-slate-300">Monthly Leads Received:</label>
+                <span id="calc-leads-val" class="font-heading font-black text-brand-cyan text-base sm:text-lg">300 Leads</span>
+              </div>
+              <input type="range" id="calc-leads-slider" min="50" max="2500" step="50" value="300" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" 
+                     oninput="updateRoiCalc()" />
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>50</span>
+                <span>1,000</span>
+                <span>2,500+</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Average Deal Value -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label for="calc-deal-slider" class="text-xs font-bold text-slate-300">Average Sale / Deal Value:</label>
+                <span id="calc-deal-val" class="font-heading font-black text-emerald-400 text-base sm:text-lg">₹5,000</span>
+              </div>
+              <input type="range" id="calc-deal-slider" min="1000" max="50000" step="1000" value="5000" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400" 
+                     oninput="updateRoiCalc()" />
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>₹1,000</span>
+                <span>₹25,000</span>
+                <span>₹50,000+</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+              <span class="text-slate-200 font-bold">Harvard Business Review Study:</span> Responding within 5 minutes vs 30 minutes increases lead qualification by <strong class="text-brand-cyan">21x</strong>. Without instant automation, an estimated 30% of leads drop off.
+            </div>
+
+          </div>
+
+          <!-- Results Right Column -->
+          <div class="bg-gradient-to-br from-slate-900 to-slate-850 p-6 rounded-2xl border border-slate-700 text-center flex flex-col justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Estimated Monthly Revenue Leaked</p>
+              <div id="calc-loss-val" class="text-2xl sm:text-3xl font-heading font-black text-rose-400 mb-3">
+                ~₹4,50,000/mo
+              </div>
+              
+              <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 mb-4">
+                <p class="text-[11px] text-slate-300 font-medium">Extra Revenue Recoverable with Simple Floww:</p>
+                <p id="calc-gain-val" class="text-xl sm:text-2xl font-heading font-black text-emerald-400 mt-0.5">
+                  +₹45,000 / month
+                </p>
+                <p class="text-[10px] text-emerald-400/80 mt-0.5">Based on just 9 extra deals saved with 4-second auto-replies</p>
+              </div>
+
+              <div class="text-xs text-slate-400 mb-4 flex items-center justify-center gap-2">
+                <span>Simple Floww Cost: <strong class="text-white">₹999/mo</strong></span>
+                <span>&bull;</span>
+                <span class="text-brand-cyan font-bold" id="calc-roi-val">45x Estimated ROI</span>
+              </div>
+            </div>
+
+            <a href="#pricing" class="cta-shine w-full py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-cyan transition-all shadow-md">
+              Plug This Leak for ₹999/mo &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== 7. THE GODFATHER OFFER STACK ==================== -->
   <section class="py-14 sm:py-20 bg-brand-navy text-white border-b border-slate-800 relative overflow-hidden">
     <div class="absolute -top-20 -right-20 w-80 h-80 bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
@@ -746,6 +985,19 @@
       </div>
 
       <div class="reveal-scale bg-slate-900/90 rounded-2xl p-6 sm:p-8 border-2 border-brand-cyan/50 shadow-2xl glow-border">
+        <!-- Launch Batch Spots Counter (Real Scarcity) -->
+        <div class="mb-5 p-3 rounded-xl bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-amber-500/15 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs text-amber-300">
+          <div class="flex items-center gap-2 font-bold">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span>Launch Batch: 1-on-1 VIP Zoom Setup bonus limited to first 50 subscribers</span>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <div class="w-28 sm:w-36 h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+              <div class="h-full bg-gradient-to-r from-amber-400 to-rose-500 rounded-full" style="width: 76%;"></div>
+            </div>
+            <span class="font-mono font-bold text-[11px] text-white">38/50 Claimed</span>
+          </div>
+        </div>
         <div class="space-y-3.5 mb-6 text-xs sm:text-sm">
           <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
             <span class="flex items-center gap-2 font-medium"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Simple Floww Pro Platform (Full Month Access)</span>
@@ -907,11 +1159,33 @@
 
       </div>
 
-      <div class="mt-8 p-4 rounded-xl bg-white border border-slate-200 text-center max-w-xl mx-auto">
-        <p class="text-xs text-slate-600 font-semibold flex items-center justify-center gap-1.5">
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
-          7-Day 100% Money-Back Guarantee &bull; Cancel Anytime with 1 Click
-        </p>
+      <!-- Founder's Official Guarantee Certificate Card -->
+      <div class="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white via-slate-50 to-blue-50/30 border-2 border-slate-200 shadow-xl max-w-2xl mx-auto reveal">
+        <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          
+          <!-- Golden Guarantee Seal Badge -->
+          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 p-1 flex-shrink-0 shadow-lg">
+            <div class="w-full h-full rounded-full bg-slate-900 flex flex-col items-center justify-center text-center p-1">
+              <i data-lucide="shield-check" class="w-6 h-6 text-amber-400"></i>
+              <span class="text-[8px] font-black uppercase text-amber-300 tracking-wider">100% REFUND</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-base sm:text-lg font-heading font-black text-brand-navy">
+              Abhinandan's 7-Day "Zero-Risk, 100% Happy" Guarantee
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed mt-1.5">
+              "Subscribe to Simple Floww and use it with your team for 7 full days. If our 4-second auto-reply and sales CRM don't immediately save you hours of manual work and speed up your lead closures, just send us a WhatsApp message and we will refund 100% of your money. No questions asked."
+            </p>
+            <div class="mt-3 flex items-center justify-center sm:justify-start gap-3 text-[11px] text-slate-500 font-semibold">
+              <span class="text-brand-blue font-bold">&mdash; Abhinandan Kumar</span>
+              <span>&bull;</span>
+              <span>Founder &amp; CEO, Simple Floww</span>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
@@ -1237,6 +1511,33 @@
     function startLiveDemoVideo() {
       const wrap = document.getElementById('vsl-wrapper');
       wrap.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/i7R5ui_64xM?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    }
+
+    
+    // Interactive ROI Calculator Logic
+    function updateRoiCalc() {
+      const leads = parseInt(document.getElementById('calc-leads-slider').value) || 300;
+      const deal = parseInt(document.getElementById('calc-deal-slider').value) || 5000;
+
+      document.getElementById('calc-leads-val').textContent = leads.toLocaleString('en-IN') + ' Leads';
+      document.getElementById('calc-deal-val').textContent = '₹' + deal.toLocaleString('en-IN');
+
+      // Estimated 30% lost leads due to delayed replies
+      const lostLeads = Math.round(leads * 0.30);
+      const leakedRev = lostLeads * deal;
+
+      // Conservative 10% recovery (3 out of 10 lost leads recovered)
+      const recoveredLeads = Math.max(1, Math.round(lostLeads * 0.10));
+      const gainedRev = recoveredLeads * deal;
+      const roiRatio = Math.round(gainedRev / 999);
+
+      document.getElementById('calc-loss-val').textContent = '~₹' + leakedRev.toLocaleString('en-IN') + '/mo';
+      document.getElementById('calc-gain-val').textContent = '+₹' + gainedRev.toLocaleString('en-IN') + ' / month';
+      document.getElementById('calc-roi-val').textContent = roiRatio + 'x Estimated ROI';
+    }
+    // Run on load
+    if (document.getElementById('calc-leads-slider')) {
+      updateRoiCalc();
     }
 
     function initApp() {
