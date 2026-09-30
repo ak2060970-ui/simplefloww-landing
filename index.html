@@ -823,38 +823,32 @@
     </div>
   </section>
 
-  <!-- ==================== 6.5 ROI & LEAD LEAKAGE CALCULATOR ==================== -->
-  <section class="py-14 sm:py-20 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden" id="calculator">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-      
-      <div class="text-center mb-10 reveal">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-cyan bg-brand-cyan/20 border border-brand-cyan/40 px-3.5 py-1 rounded-full inline-block mb-3">
-          📊 INTERACTIVE ROI CALCULATOR
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-heading font-black text-white tracking-tight mb-2">
+  <!-- ==================== 6.5 ROI CALCULATOR (NEAT, CLEAN & TO THE POINT) ==================== -->
+  <section class="py-10 sm:py-14 bg-slate-50 border-b border-slate-200" id="calculator">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center mb-6 sm:mb-8 reveal">
+        <h2 class="text-2xl sm:text-3xl font-heading font-black text-brand-navy tracking-tight">
           How Much Revenue Are You Losing to Slow Replies?
         </h2>
-        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
-          78% of customers buy from the business that responds first. Slide the controls below to calculate your estimated lead leakage.
-        </p>
       </div>
 
-      <div class="reveal-scale bg-slate-950/80 rounded-3xl p-6 sm:p-9 border border-slate-700/80 shadow-2xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           
           <!-- Sliders Left Column -->
-          <div class="space-y-6">
+          <div class="space-y-5">
             
             <!-- Slider 1: Monthly Leads -->
             <div>
-              <div class="flex justify-between items-center mb-2">
-                <label for="calc-leads-slider" class="text-xs font-bold text-slate-300">Monthly Leads Received:</label>
-                <span id="calc-leads-val" class="font-heading font-black text-brand-cyan text-base sm:text-lg">300 Leads</span>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-bold text-slate-700">Monthly Inquiries:</span>
+                <span id="calc-leads-val" class="font-heading font-black text-brand-blue text-sm sm:text-base">300 Leads</span>
               </div>
               <input type="range" id="calc-leads-slider" min="50" max="2500" step="50" value="300" 
-                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" 
+                     class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-blue" 
                      oninput="updateRoiCalc()" />
-              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-medium">
                 <span>50</span>
                 <span>1,000</span>
                 <span>2,500+</span>
@@ -863,51 +857,43 @@
 
             <!-- Slider 2: Average Deal Value -->
             <div>
-              <div class="flex justify-between items-center mb-2">
-                <label for="calc-deal-slider" class="text-xs font-bold text-slate-300">Average Sale / Deal Value:</label>
-                <span id="calc-deal-val" class="font-heading font-black text-emerald-400 text-base sm:text-lg">₹5,000</span>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-bold text-slate-700">Average Deal / Order Value:</span>
+                <span id="calc-deal-val" class="font-heading font-black text-emerald-600 text-sm sm:text-base">₹5,000</span>
               </div>
               <input type="range" id="calc-deal-slider" min="1000" max="50000" step="1000" value="5000" 
-                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400" 
+                     class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600" 
                      oninput="updateRoiCalc()" />
-              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-medium">
                 <span>₹1,000</span>
                 <span>₹25,000</span>
                 <span>₹50,000+</span>
               </div>
             </div>
 
-            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
-              <span class="text-slate-200 font-bold">Harvard Business Review Study:</span> Responding within 5 minutes vs 30 minutes increases lead qualification by <strong class="text-brand-cyan">21x</strong>. Without instant automation, an estimated 30% of leads drop off.
-            </div>
-
           </div>
 
           <!-- Results Right Column -->
-          <div class="bg-gradient-to-br from-slate-900 to-slate-850 p-6 rounded-2xl border border-slate-700 text-center flex flex-col justify-between">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-3">
             <div>
-              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Estimated Monthly Revenue Leaked</p>
-              <div id="calc-loss-val" class="text-2xl sm:text-3xl font-heading font-black text-rose-400 mb-3">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">Estimated Revenue Lost:</div>
+              <div id="calc-loss-val" class="text-2xl sm:text-3xl font-heading font-black text-rose-600">
                 ~₹4,50,000/mo
-              </div>
-              
-              <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 mb-4">
-                <p class="text-[11px] text-slate-300 font-medium">Extra Revenue Recoverable with Simple Floww:</p>
-                <p id="calc-gain-val" class="text-xl sm:text-2xl font-heading font-black text-emerald-400 mt-0.5">
-                  +₹45,000 / month
-                </p>
-                <p class="text-[10px] text-emerald-400/80 mt-0.5">Based on just 9 extra deals saved with 4-second auto-replies</p>
-              </div>
-
-              <div class="text-xs text-slate-400 mb-4 flex items-center justify-center gap-2">
-                <span>Simple Floww Cost: <strong class="text-white">₹999/mo</strong></span>
-                <span>&bull;</span>
-                <span class="text-brand-cyan font-bold" id="calc-roi-val">45x Estimated ROI</span>
               </div>
             </div>
 
-            <a href="#pricing" class="cta-shine w-full py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-cyan transition-all shadow-md">
-              Plug This Leak for ₹999/mo &rarr;
+            <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
+              <div class="text-[11px] font-bold text-emerald-800">Recoverable With Simple Floww:</div>
+              <div id="calc-gain-val" class="text-lg sm:text-xl font-heading font-black text-emerald-600">
+                +₹45,000 / month
+              </div>
+              <div id="calc-roi-val" class="text-[10px] font-bold text-emerald-700 mt-0.5">
+                45x Estimated ROI
+              </div>
+            </div>
+
+            <a href="#pricing" class="cta-shine block w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-sf-gradient hover:shadow-sf-blue transition-all shadow-md active:scale-95">
+              Recover Lost Revenue &mdash; ₹999/mo &rarr;
             </a>
           </div>
 
