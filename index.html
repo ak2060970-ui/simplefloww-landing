@@ -95,13 +95,35 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Hero Background with Simple Floww Blue Tints */
+    /* Premium Grid Lines Theme (White background with crisp line grid & soft radial blend) */
     .sf-hero-mesh {
-      background:
-        radial-gradient(circle at 10% 15%, rgba(0, 71, 255, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(0, 194, 255, 0.14) 0%, transparent 45%),
-        radial-gradient(circle at 50% 40%, rgba(239, 246, 255, 0.8) 0%, transparent 70%),
-        #FFFFFF;
+      background-color: #FFFFFF;
+      background-image:
+        radial-gradient(70% 55% at 50% 0%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.2) 65%, transparent 100%),
+        linear-gradient(90deg, rgba(225, 232, 240, 0.75) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(225, 232, 240, 0.75) 1px, transparent 1px);
+      background-size: auto, 27px 27px, 27px 27px;
+      position: relative;
+    }
+
+    .hero-title-highlight {
+      white-space: nowrap;
+      background: linear-gradient(90deg, #0A1128 0%, #0047FF 60%, #00C2FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+    .hero-title-highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 3.5px;
+      background: linear-gradient(90deg, #0047FF, #00C2FF);
+      border-radius: 999px;
     }
 
     /* Scroll Reveal - Progressive Enhancement (Never blank!) */
@@ -206,21 +228,45 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
       
       <!-- Trust Indicator -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white shadow-sm border border-slate-200 mb-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-slate-200/90 mb-4">
         <span class="w-2 h-2 rounded-full bg-brand-waGreen animate-pulse"></span>
-        <span class="text-[11px] sm:text-xs font-bold text-slate-800 uppercase tracking-wide">Official Meta Tech Partner &middot; Flat ₹999/month</span>
+        <span class="text-[11px] sm:text-xs font-bold text-slate-800 uppercase tracking-wide"><strong>Simple Floww</strong> &middot; Official Meta Tech Partner &middot; Flat ₹999/month</span>
       </div>
 
       <!-- Core Hook Headline -->
-      <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-heading font-black text-brand-navy leading-[1.14] mb-3.5 tracking-tight max-w-3xl mx-auto">
-        WhatsApp API + CRM + Automation.<br>
-        <span class="brand-gradient-text">All in One Platform.</span>
+      <h1 class="text-3xl sm:text-5xl lg:text-[50px] font-heading font-black text-brand-navy leading-[1.18] mb-3 tracking-tight max-w-4xl mx-auto">
+        WhatsApp API + CRM + Automation.<br class="hidden sm:inline">
+        All In One <span class="hero-title-highlight">Powerful CRM</span>
       </h1>
 
       <!-- Sub-headline -->
-      <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mb-5 leading-relaxed">
-        Connect your WhatsApp number in 15 minutes. Shared team inbox, automated drip follow-ups, 4-second Meta Lead Ads auto-replies, and complete Sales Pipeline CRM &mdash; so no customer ever slips through the cracks.
+      <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mb-5 leading-relaxed font-semibold">
+        From capturing leads to closing sales, manage it all with one CRM.
       </p>
+
+      <!-- 3 Unlimited Feature Pills -->
+      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 max-w-3xl mx-auto mb-3.5">
+        <div class="bg-white border-2 border-brand-blue/70 text-brand-navy rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-xs sm:text-sm font-heading font-extrabold flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(0,71,255,0.2)] hover:border-brand-blue transition-all hover:-translate-y-0.5">
+          <span class="text-base sm:text-lg leading-none">👥</span>
+          <span><b class="text-brand-blue font-black">Unlimited</b> Team Members</span>
+        </div>
+        <div class="bg-white border-2 border-brand-blue/70 text-brand-navy rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-xs sm:text-sm font-heading font-extrabold flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(0,71,255,0.2)] hover:border-brand-blue transition-all hover:-translate-y-0.5">
+          <span class="text-base sm:text-lg leading-none">🤖</span>
+          <span><b class="text-brand-blue font-black">Unlimited</b> Chatbots</span>
+        </div>
+        <div class="bg-white border-2 border-brand-blue/70 text-brand-navy rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-xs sm:text-sm font-heading font-extrabold flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(0,71,255,0.2)] hover:border-brand-blue transition-all hover:-translate-y-0.5">
+          <span class="text-base sm:text-lg leading-none">📱</span>
+          <span><b class="text-brand-blue font-black">Unlimited</b> Numbers</span>
+        </div>
+      </div>
+
+      <!-- Trust Row Highlights -->
+      <ul class="flex flex-wrap justify-center items-center gap-x-4 sm:gap-x-6 gap-y-1.5 text-xs sm:text-[13px] font-bold text-slate-700 mb-5">
+        <li class="flex items-center gap-1.5"><span class="text-emerald-500 font-black text-sm">✓</span> Official Meta API</li>
+        <li class="flex items-center gap-1.5"><span class="text-emerald-500 font-black text-sm">✓</span> Live in 15 min</li>
+        <li class="flex items-center gap-1.5"><span class="text-emerald-500 font-black text-sm">✓</span> No developer needed</li>
+        <li class="flex items-center gap-1.5"><span class="text-emerald-500 font-black text-sm">✓</span> Meta's rate, no markup</li>
+      </ul>
 
       <!-- Video Sales Letter (VSL) / Interactive Demo Player -->
       <div id="vsl-wrapper" class="relative w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-slate-950 flex items-center justify-center mb-5 aspect-video">
