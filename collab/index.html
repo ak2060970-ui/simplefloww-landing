@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Collaboration — Simple Floww</title>
+  <meta name="description" content="Collaborate with Simple Floww. Submit your profile details to partner with us.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/simplefloww-brand-logo.png">
+
+  <!-- Fonts: Outfit (Headings) + Plus Jakarta Sans (Clean Modern UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              navy: '#0A1128',
+              blue: '#0047FF',
+              blueHover: '#0038D1',
+              cyan: '#00C2FF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 font-sans min-h-screen flex flex-col justify-between antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="https://simplefloww.com" class="flex items-center">
+        <img src="./assets/logo.png" alt="Logo" onerror="this.onerror=null; this.src='https://offer.simplefloww.com/assets/simplefloww-brand-logo.png';" class="h-8 w-auto">
+      </a>
+      <a href="https://simplefloww.com" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors flex items-center gap-1">
+        <span>Visit Site</span>
+        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-4 py-10 sm:py-16">
+    <div class="w-full max-w-xl">
+      
+      <!-- Top Title -->
+      <div class="text-center mb-8">
+        <span class="inline-block text-[11px] font-bold text-brand-blue uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-100 mb-2.5">
+          Creator &amp; Brand Partnership
+        </span>
+        <h1 class="text-2xl sm:text-3xl font-heading font-black text-brand-navy tracking-tight">
+          Collaboration Request
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1.5 max-w-md mx-auto">
+          Share your details below. Our team will review and connect with you.
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 sm:p-8 relative">
+        
+        <form id="collabForm" onsubmit="handleSubmit(event)" class="space-y-5">
+          
+          <!-- 1. Full Name -->
+          <div>
+            <label for="fullName" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Full Name <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              required 
+              placeholder="Enter your full name"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+            />
+          </div>
+
+          <!-- 2. WhatsApp Number -->
+          <div>
+            <label for="whatsapp" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              WhatsApp Number <span class="text-rose-500">*</span>
+            </label>
+            <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus-within:bg-white focus-within:border-brand-blue focus-within:ring-2 focus-within:ring-blue-100 transition-all">
+              <span class="text-xs font-bold text-slate-500 pr-2.5 border-r border-slate-200 mr-2.5 shrink-0">
+                🇮🇳 +91
+              </span>
+              <input 
+                type="tel" 
+                id="whatsapp" 
+                name="whatsapp" 
+                required 
+                maxlength="15"
+                placeholder="WhatsApp mobile number"
+                class="w-full bg-transparent border-0 p-0 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
+              />
+            </div>
+          </div>
+
+          <!-- 3. Email Address -->
+          <div>
+            <label for="email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Email Address <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              placeholder="name@example.com"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+            />
+          </div>
+
+          <!-- 4. Platform Selection (Instagram / YouTube / Both) -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Platform <span class="text-rose-500">*</span>
+            </label>
+            <div class="grid grid-cols-3 gap-2.5">
+              <button 
+                type="button" 
+                onclick="setPlatform('Instagram')" 
+                id="btn-Instagram"
+                class="platform-tab flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-brand-blue bg-blue-50 text-brand-blue text-xs font-bold transition-all cursor-pointer"
+              >
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                <span>Instagram</span>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="setPlatform('YouTube')" 
+                id="btn-YouTube"
+                class="platform-tab flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 text-xs font-bold hover:bg-slate-100 transition-all cursor-pointer"
+              >
+                <i data-lucide="youtube" class="w-4 h-4"></i>
+                <span>YouTube</span>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="setPlatform('Both')" 
+                id="btn-Both"
+                class="platform-tab flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 text-xs font-bold hover:bg-slate-100 transition-all cursor-pointer"
+              >
+                <i data-lucide="layers" class="w-4 h-4"></i>
+                <span>Both</span>
+              </button>
+            </div>
+            <input type="hidden" id="selectedPlatform" name="platform" value="Instagram">
+          </div>
+
+          <!-- 5. Profile URL or Username -->
+          <div>
+            <label for="profileUrl" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="profileUrlLabel">
+              Instagram Profile URL or Username <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="profileUrl" 
+              name="profileUrl" 
+              required 
+              placeholder="@yourhandle or https://instagram.com/yourhandle"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+            />
+          </div>
+
+          <!-- 6. Followers / Subscriber Count -->
+          <div>
+            <label for="followerCount" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Followers / Subscriber Count <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="followerCount" 
+              name="followerCount" 
+              required 
+              placeholder="e.g. 50K or 150,000"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+            />
+          </div>
+
+          <!-- 7. Permission & Consent Checkbox -->
+          <div class="pt-1">
+            <label class="flex items-start gap-2.5 cursor-pointer select-none bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+              <input 
+                type="checkbox" 
+                id="consentCheckbox" 
+                name="consent" 
+                required 
+                checked
+                class="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue shrink-0 cursor-pointer"
+              />
+              <span class="text-xs text-slate-600 leading-relaxed">
+                I give consent to the <strong>Simple Floww</strong> team to connect with me on <strong>call, WhatsApp, or email</strong> regarding collaboration opportunities.
+              </span>
+            </label>
+          </div>
+
+          <!-- 8. Submit Button -->
+          <div class="pt-1">
+            <button 
+              type="submit" 
+              id="submitBtn"
+              class="w-full py-3.5 px-5 rounded-xl bg-brand-blue hover:bg-brand-blueHover text-white font-bold text-sm tracking-wide shadow-sm hover:shadow transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span id="btnText">Submit Details</span>
+              <i data-lucide="arrow-right" class="w-4 h-4" id="btnIcon"></i>
+              <span id="btnLoader" class="hidden">
+                <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Success Message Overlay -->
+        <div id="successOverlay" class="hidden absolute inset-0 bg-white rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center z-20">
+          <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3">
+            <i data-lucide="check" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-xl font-heading font-black text-brand-navy mb-1.5">
+            Details Submitted!
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 max-w-sm mb-5 leading-relaxed">
+            Thank you, <span id="respName" class="font-bold text-slate-800"></span>. We have received your collaboration request. Our team will reach out to you on call or WhatsApp soon.
+          </p>
+          <button 
+            type="button" 
+            onclick="resetForm()" 
+            class="text-xs font-bold text-brand-blue hover:underline"
+          >
+            Submit Another Response
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+    <div class="max-w-4xl mx-auto px-4">
+      <p>&copy; <span id="year"></span> Simple Floww. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    function setPlatform(platform) {
+      document.getElementById('selectedPlatform').value = platform;
+      
+      const tabs = document.querySelectorAll('.platform-tab');
+      tabs.forEach(t => {
+        t.classList.remove('border-brand-blue', 'bg-blue-50', 'text-brand-blue');
+        t.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-600');
+      });
+
+      const active = document.getElementById('btn-' + platform);
+      if (active) {
+        active.classList.remove('border-slate-200', 'bg-slate-50', 'text-slate-600');
+        active.classList.add('border-brand-blue', 'bg-blue-50', 'text-brand-blue');
+      }
+
+      const label = document.getElementById('profileUrlLabel');
+      const input = document.getElementById('profileUrl');
+      if (platform === 'Instagram') {
+        label.innerHTML = 'Instagram Profile URL or Username <span class="text-rose-500">*</span>';
+        input.placeholder = '@yourhandle or https://instagram.com/yourhandle';
+      } else if (platform === 'YouTube') {
+        label.innerHTML = 'YouTube Channel URL or Handle <span class="text-rose-500">*</span>';
+        input.placeholder = '@yourchannel or https://youtube.com/@yourchannel';
+      } else {
+        label.innerHTML = 'Profile URL or Username <span class="text-rose-500">*</span>';
+        input.placeholder = '@username or profile link';
+      }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const platform = document.getElementById('selectedPlatform').value;
+      const profileUrl = document.getElementById('profileUrl').value.trim();
+      const followerCount = document.getElementById('followerCount').value.trim();
+      const consent = document.getElementById('consentCheckbox').checked;
+
+      if (!fullName || !whatsapp || !email || !profileUrl || !followerCount || !consent) {
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+      const btnLoader = document.getElementById('btnLoader');
+
+      submitBtn.disabled = true;
+      btnText.textContent = "Submitting...";
+      btnIcon.classList.add('hidden');
+      btnLoader.classList.remove('hidden');
+
+      // Save submission locally
+      try {
+        const lead = {
+          fullName,
+          whatsapp,
+          email,
+          platform,
+          profileUrl,
+          followerCount,
+          consent: true,
+          submittedAt: new Date().toISOString()
+        };
+        const all = JSON.parse(localStorage.getItem('sf_collab_leads') || '[]');
+        all.push(lead);
+        localStorage.setItem('sf_collab_leads', JSON.stringify(all));
+      } catch (err) {}
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        btnText.textContent = "Submit Details";
+        btnIcon.classList.remove('hidden');
+        btnLoader.classList.add('hidden');
+
+        document.getElementById('respName').textContent = fullName;
+        document.getElementById('successOverlay').classList.remove('hidden');
+
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      }, 600);
+    }
+
+    function resetForm() {
+      document.getElementById('collabForm').reset();
+      document.getElementById('successOverlay').classList.add('hidden');
+      setPlatform('Instagram');
+    }
+  </script>
+</body>
+</html>
